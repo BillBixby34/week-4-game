@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Easy Orbs</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+<div id="wrapper">
+<header id="opening"><!--font not taking-->
+	<h1>Orb Absconding</h1>
+</header>
+<div id="instructions">
+    <p> You will be given a random number at the start of the game.</p>
+    <p> There are four orbs below. By clicking on a orb you will add a specific amount of points to your total score. Each orb holds a <i>different</i> value!</p>
+    <p> You win the game by matching your total score to the random number. You lose the game if your total score goes above the random number. </p>
+    <p> Each time the game starts, the values of each orb will change.</p>
+<!--hold the "number-to-guess" -->
+  <h1>Number to Guess: <span id="number-to-guess"></span></h1>
+
+
+<div id="orbs"><!--orb images-->
+<!--Will attempt jQuery insertion
+	<img class="orb-space" src="assets/images/blue_orb.png" alt="blue_orb">
+	<img class="orb-space" src="assets/images/gold_orb.png" alt="gold_orb">
+	<img class="orb-space" src="assets/images/purple_orb.png" alt="purple_orb">
+	<img class="orb-space" src="assets/images/white_orb.png" alt="white_orb">jQuery attempt end-->
+</div><!--closes div id="orbs"-->
+</div><!--closes div id="wrapper"-->
+
+
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+<script type="text/javascript">
+
+var targetNumber = 50;//userTotal to winshould equal this//randomize or have 4 choices
+  $("#number-to-guess").text(targetNumber);// Here we set the "number-to-guess" header to match the "targetNumber".// Eventually this will allow us to change the HTML to match the value in the JavaScript.
+
+	var userTotal = 0;
+
+	
+	//this sets orb number at the start of the "game".need to randomize
+  var numberOptions = [2, 3, 7, 12];
+  for (var i = 0; i < numberOptions.length; i++) {
+    var imageOrb = $("<img>");//change to imageOrb
+    imageOrb.addClass("orb-space");// This will allow the CSS to take effect.
+    // Each imageOrb will be given a src link to the orb image but how to give more than 1 img?
+    imageOrb.attr("src", "assets/images/blue_orb.png");
+    imageOrb.attr("src", "assets/images/gold_orb.png");
+    // Each imageOrb will be given a data attribute called data-orbvalue.
+    // This data attribute will be set equal to the array value.
+    imageOrb.attr("data-orbvalue", numberOptions[i]);
+
+    // Lastly, each orb image (with all it classes and attributes) will get added to the page.
+    $("#orbs").append(imageOrb);
+  }
+  
+  //will test with different methods above
+  //uncomment after jQuery test var increment = numberOptions[Math.round(Math.random())];// We'll then increment the counter each time by the randomly selected number.
+   $(".orb-space").on("click", function() {//sets .orb-space as reacting to click function
+    var orbValue = ($(this).attr("data-orbvalue"));//value taken from "data-orbvalue" attribute
+    orbValue = parseInt(orbValue);//convert html string to integer
+    userTotal += orbValue;//per click, userTotal increases by an orb's value
+    alert("You're score is: " + userTotal);// Created a simple "aler=t" to get our bearings.
+     if (userTotal === targetNumber) {
+
+        //user win.
+        alert("You win!");
+      }//closes if(userTotal...)
+     else if (userTotal >= targetNumber) {
+        //they are alerted with a loss.
+        alert("You lose!!");
+      }//closes else if(userTotal ...)
+
+
+  })//closes orb-space.onclick(function)
+</script>
+</body>
+</html>
