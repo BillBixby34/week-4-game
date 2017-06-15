@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Easy Orbs</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
@@ -14,27 +15,27 @@
     <p> There are four orbs below. By clicking on a orb you will add a specific amount of points to your total score. Each orb holds a <i>different</i> value!</p>
     <p> You win the game by matching your total score to the random number. You lose the game if your total score goes above the random number. </p>
     <p> Each time the game starts, the values of each orb will change.</p>
-<!--hold the "number-to-guess" -->
+  </div>
+
     <div id="quest-box"><h1>Number to Guess: <span id="quest-number"></span></h1>
     </div>
-    <section id="win-loss_box"><p>Wins: <span id="wins"></span></p><br>
-    <p>Losses: <span id="losses"></span></p><br>
+    <section id="win-loss_box"><span id="wins"></span><br>
+    <span id="losses"></span><br>
     </section>
 
 
     <section class="orbs"><!--orb images-->
     <!--Will attempt jquery insertion-->
      <div class="orbs-align">
-    	<img id="blue_orb" src="assets/images/blue_orb.png" alt="blue_orb">
-    	<img id="gold_orb" src="assets/images/gold_orb.png" alt="gold_orb">
-    	<img id="purple_orb" src="assets/images/purple_orb.png" alt="purple_orb">
-    	<img id="white_orb" src="assets/images/white_orb.png" alt="white_orb"><!--jQuery attempt end-->
-     </div> 
+    	<img class="orb-image" id="blue_orb" src="assets/images/blue_orb.png" alt="blue_orb">
+    	<img class="orb-image" id="gold_orb" src="assets/images/gold_orb.png" alt="gold_orb">
+    	<img class="orb-image" id="purple_orb" src="assets/images/purple_orb.png" alt="purple_orb">
+    	<img class="orb-image" id="white_orb" src="assets/images/white_orb.png" alt="white_orb"><!--jQuery attempt end-->
+     </div><!--div orbs-align-->
     </section><!--closes class="orbs"-->
-    <div id="info"><p>Your total score is: </p>
-    </div><!--just want seperate box for this-->
-    <div id="user-total">
-    </div>
+    <section id="info"><h3>Your total score is: </h3>
+    <h1 id="user-total"></h1>
+    </section><!--closes id="info"-->
 </div><!--closes div id="wrapper"-->
 
 
@@ -46,68 +47,59 @@
 
 
 //name variables
-var targetNumber = Math.floor(Math.random() * 120 + 19)//randomize array of 4 choices??
+var targetNumber = Math.floor(Math.random() * 120 + 19);
+
   $("#quest-number").text(targetNumber);
 
 	var userTotal = 0;
   $("#user-total").text(userTotal);
 
-
- // for (var i = 0; i < numberOptions.length; i++) {
-  //  var imageOrb = $("<img>");//change to imageOrb
-    //imageOrb.addClass("orb-space");
-    
-    // Each imageOrb will be given a data attribute called data-orbvalue.
-    // This data attribute will be set equal to the array value.
-   // imageOrb.attr("data-orbvalue", numberOptions[i]);
-
-    // Lastly, each orb image (with all it classes and attributes) will get added to the page.
-   // $("#orbs").append(imageOrb);
-  //}
-   //$(".orb-space").on("click", function() {//sets .orb-space as reacting to click function
-    //var orbValue = ($(this).attr("data-orbvalue"));//value taken from "data-orbvalue" attribute
-    //orbValue = parseInt(orbValue);//convert html string to integer
-    //userTotal += orbValue;//per click, userTotal increases by an orb's value
-    //alert("You're score is: " + userTotal);
-
+ 
     //sets orb value b/w 1-12
     var orb1 = Math.floor(Math.random() * 11 + 1);
     $("#blue_orb").on("click", function() {
     userTotal+=orb1;
-    $("#user-total").text(userTotal);;
+    $("#user-total").text(userTotal);
+    playGame();
         });
     
     var orb2 = Math.floor(Math.random() * 11 + 1);
     $("#gold_orb").on("click", function() {
     userTotal+=orb2;
-    $("#user-total").text(userTotal);;
+    $("#user-total").text(userTotal);
+    playGame();
         });
     
     var orb3 = Math.floor(Math.random() * 11 + 1);
     $("#purple_orb").on("click", function() {
     userTotal+=orb3;
-    $("#user-total").text(userTotal);;
+    $("#user-total").text(userTotal);
+    playGame();
         });
     
     var orb4 = Math.floor(Math.random() * 11 + 1);
     $("#white_orb").on("click", function() {
     userTotal+=orb4;
     $("#user-total").text(userTotal);
+    playGame();
         });
+   
 
     //functions for game logic
 
     function playGame(){
-     if (userTotal == targetNumber) {
+     if (userTotal === targetNumber) {
         wins ++;
         //$("#wins").text("Wins: ")
         alert("You win!");
+        $("#wins").text("Wins: " + wins);
         reset();
         
       }//closes if (userTotal
      else if (userTotal > targetNumber) {
         losses ++;
         alert("You lose!!");
+        $("#losses").text("Losses: " + losses);
         reset();
         
       }
