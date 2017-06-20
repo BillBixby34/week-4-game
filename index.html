@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Easy Orbs</title>
-  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
@@ -19,8 +19,8 @@
 
     <div id="quest-box"><h1>Number to Guess: <span id="quest-number"></span></h1>
     </div>
-    <section id="win-loss_box"><span id="wins"></span><br>
-    <span id="losses"></span><br>
+    <section id="win-loss_box"><div id="wins"></div><br>
+    <div id="losses"></div>
     </section>
 
 
@@ -53,7 +53,10 @@ var targetNumber = Math.floor(Math.random() * 120 + 19);
 
 	var userTotal = 0;
   $("#user-total").text(userTotal);
-
+  var wins = 0;
+  $("#wins").text("Wins: " + wins);
+  var losses = 0;
+  $("#losses").text("Losses: " + losses);
  
     //sets orb value b/w 1-12
     var orb1 = Math.floor(Math.random() * 11 + 1);
@@ -87,16 +90,20 @@ var targetNumber = Math.floor(Math.random() * 120 + 19);
 
     //functions for game logic
 
+    //alerts for losses going out even when userTotal < targetNumber
+
     function playGame(){
-     if (userTotal === targetNumber) {
-        wins ++;
+     if (userTotal == targetNumber) {
+        
         //$("#wins").text("Wins: ")
+        wins ++;
         alert("You win!");
         $("#wins").text("Wins: " + wins);
         reset();
         
       }//closes if (userTotal
      else if (userTotal > targetNumber) {
+        
         losses ++;
         alert("You lose!!");
         $("#losses").text("Losses: " + losses);
