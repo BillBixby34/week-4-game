@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Easy Orbs</title>
+  <title>Easy Orbs</title> 
   
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
 <div id="wrapper">
   <div id="opening"><!--font not taking-->
-	 <h1>Orb Absconding</h1>
+   Orb Absconding
   </div>
   <div id="instructions">
     <p> You will be given a random number at the start of the game.</p>
@@ -19,110 +19,109 @@
 
     <div id="quest-box"><h1>Number to Guess: <span id="quest-number"></span></h1>
     </div>
-    <section id="win-loss_box"><div id="wins"></div><br>
-    <div id="losses"></div>
+    <section class="win-loss_box"><h1>Wins: <div id="wins"></div></h1><br>
+    <h1>Losses: <div id="losses"></div></h1>
     </section>
 
 
     <section class="orbs"><!--orb images-->
     <!--Will attempt jquery insertion-->
      <div class="orbs-align">
-    	<img class="orb-image" id="blue_orb" src="assets/images/blue_orb.png" alt="blue_orb">
-    	<img class="orb-image" id="gold_orb" src="assets/images/gold_orb.png" alt="gold_orb">
-    	<img class="orb-image" id="purple_orb" src="assets/images/purple_orb.png" alt="purple_orb">
-    	<img class="orb-image" id="white_orb" src="assets/images/white_orb.png" alt="white_orb"><!--jQuery attempt end-->
+      <img class="orb-image" id="blue_orb" src="assets/images/blue_orb.png" alt="blue_orb">
+      <img class="orb-image" id="gold_orb" src="assets/images/gold_orb.png" alt="gold_orb">
+      <img class="orb-image" id="purple_orb" src="assets/images/purple_orb.png" alt="purple_orb">
+      <img class="orb-image" id="white_orb" src="assets/images/white_orb.png" alt="white_orb"><!--jQuery attempt end-->
      </div><!--div orbs-align-->
     </section><!--closes class="orbs"-->
-    <section id="info"><h3>Your total score is: </h3>
+    <section id="user-info"><h3>Your total score is: </h3>
     <h1 id="user-total"></h1>
     </section><!--closes id="info"-->
 </div><!--closes div id="wrapper"-->
 
 
-
-
+<!--jQuery library-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 
-<script type="text/javascript">
+<script type="text/javascript" src='assets/javascript/game.js'> 
 
 
 //name variables
-var targetNumber = Math.floor(Math.random() * 120 + 19);
+// var targetNumber = Math.floor(Math.random() * 120 + 19);
 
-  $("#quest-number").text(targetNumber);
+//   $("#quest-number").text(targetNumber);
 
-	var userTotal = 0;
-  $("#user-total").text(userTotal);
-  var wins = 0;
-  $("#wins").text("Wins: " + wins);
-  var losses = 0;
-  $("#losses").text("Losses: " + losses);
+//  var userTotal = 0;
+//   $("#user-total").text(userTotal);
+//   var wins = 0;
+//   $("#wins").text("Wins: " + wins);
+//   var losses = 0;
+//   $("#losses").text("Losses: " + losses);
  
-    //sets orb value b/w 1-12
-    var orb1 = Math.floor(Math.random() * 11 + 1);
-    $("#blue_orb").on("click", function() {
-    userTotal+=orb1;
-    $("#user-total").text(userTotal);
-    playGame();
-        });
+//     //sets orb value b/w 1-12
+//     var orb1 = Math.floor(Math.random() * 11 + 1);
+//     $("#blue_orb").on("click", function() {
+//     userTotal+=orb1;
+//     $("#user-total").text(userTotal);
+//     playGame();
+//         });
     
-    var orb2 = Math.floor(Math.random() * 11 + 1);
-    $("#gold_orb").on("click", function() {
-    userTotal+=orb2;
-    $("#user-total").text(userTotal);
-    playGame();
-        });
+//     var orb2 = Math.floor(Math.random() * 11 + 1);
+//     $("#gold_orb").on("click", function() {
+//     userTotal+=orb2;
+//     $("#user-total").text(userTotal);
+//     playGame();
+//         });
     
-    var orb3 = Math.floor(Math.random() * 11 + 1);
-    $("#purple_orb").on("click", function() {
-    userTotal+=orb3;
-    $("#user-total").text(userTotal);
-    playGame();
-        });
+//     var orb3 = Math.floor(Math.random() * 11 + 1);
+//     $("#purple_orb").on("click", function() {
+//     userTotal+=orb3;
+//     $("#user-total").text(userTotal);
+//     playGame();
+//         });
     
-    var orb4 = Math.floor(Math.random() * 11 + 1);
-    $("#white_orb").on("click", function() {
-    userTotal+=orb4;
-    $("#user-total").text(userTotal);
-    playGame();
-        });
+//     var orb4 = Math.floor(Math.random() * 11 + 1);
+//     $("#white_orb").on("click", function() {
+//     userTotal+=orb4;
+//     $("#user-total").text(userTotal);
+//     playGame();
+//         });
    
 
-    //functions for game logic
+//     //functions for game logic
 
-    //alerts for losses going out even when userTotal < targetNumber
+//     //alerts for losses going out even when userTotal < targetNumber
 
-    function playGame(){
-     if (userTotal == targetNumber) {
+//     function playGame(){
+//      if (userTotal == targetNumber) {
         
-        //$("#wins").text("Wins: ")
-        wins ++;
-        alert("You win!");
-        $("#wins").text("Wins: " + wins);
-        reset();
+//         //$("#wins").text("Wins: ")
+//         wins ++;
+//         alert("You win!");
+//         $("#wins").text("Wins: " + wins);
+//         reset();
         
-      }//closes if (userTotal
-     else if (userTotal > targetNumber) {
+//       }//closes if (userTotal
+//      else if (userTotal > targetNumber) {
         
-        losses ++;
-        alert("You lose!!");
-        $("#losses").text("Losses: " + losses);
-        reset();
+//         losses ++;
+//         alert("You lose!!");
+//         $("#losses").text("Losses: " + losses);
+//         reset();
         
-      }
-    };//playGame
-    function reset(){
-      userTotal = 0;
-      $("#user-total").text(userTotal);
-      var targetNumber = Math.floor(Math.random() * 120 + 19)
-      $("#quest-number").text(targetNumber);
+//       }
+//     };//playGame
+//     function reset(){
+//       userTotal = 0;
+//       $("#user-total").text(userTotal);
+//       var targetNumber = Math.floor(Math.random() * 120 + 19)
+//       $("#quest-number").text(targetNumber);
 
-      orb1 = Math.floor(Math.random() * 11 + 1);
-      orb2 = Math.floor(Math.random() * 11 + 1);
-      orb3 = Math.floor(Math.random() * 11 + 1);
-      orb4 = Math.floor(Math.random() * 11 + 1);
+//       orb1 = Math.floor(Math.random() * 11 + 1);
+//       orb2 = Math.floor(Math.random() * 11 + 1);
+//       orb3 = Math.floor(Math.random() * 11 + 1);
+//       orb4 = Math.floor(Math.random() * 11 + 1);
 
-    };//end reset
+//     };//end reset
 
   //})//closes orb-space.onclick(function)
 </script>
