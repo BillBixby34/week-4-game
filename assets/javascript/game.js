@@ -45,10 +45,11 @@ $(document).ready(function(){
   //startGame() will start and reset game parameters
   function startGame() {
     //computer number will be between 19 and 120;
-    let comChoice = Math.floor(Math.random() * 120) + 19;
-    
-    let userScore = 0;
-    //set value of each orb
+    //setting comChoice without 'let' allowed expected behavior
+    comChoice = Math.floor(Math.random() * 120) + 19;
+    userScore = 0;
+
+        //set value of each orb
     orb.blue.value = Math.floor(Math.random() * 12) + 1;
     orb.gold.value = Math.floor(Math.random() * 12) + 1;
     orb.purple.value = Math.floor(Math.random() * 12) + 1;
@@ -60,30 +61,6 @@ $(document).ready(function(){
     console.log(comChoice);
     
   }
-  //adding orb values to userScore
-  //must do clicks, add values, check score
- // //var orbScore = function(){
- //    $("#blue_orb").on("click", function(){userScore += orb.blue.value;
- //      $("#user-total").html(userScore);
- //      console.log(userScore)
- //      console.log(comChoice)
- //      keepScore();
- //    })
- //    $("#gold_orb").on("click", function(){
- //      userScore += orb.gold.value;
- //      $("#user-total").html(userScore);
- //      keepScore();
- //    })
- //    $("#purple_orb").on("click", function(){userScore += orb.purple
- //      .value;
- //      $("#user-total").html(userScore);
- //      keepScore();
- //    })
- //    $("#white_orb").on("click", function(){userScore += orb.white.value;
- //      $("#user-total").html(userScore);
- //      keepScore();
- //    })
- //  };//orbScore
 
   //will determine wins and losses
   function keepScore(){
@@ -99,9 +76,6 @@ $(document).ready(function(){
       alert("You lose! Try again.")
       startGame();
     }
-    //else{
-      //orbScore();
-    //}
   }
 
   //--------FUNC. EXECUTION---------
@@ -127,24 +101,5 @@ $(document).ready(function(){
       $("#user-total").html(userScore);
       keepScore();
     })
-  //orbScore();
-  //keepScore();
 })//end of document
-
-
-
-
-
-//for (var i = 0; i < numberOptions.length; i++) {
-  //  var imageOrb = $("<img>");//change to imageOrb
-    //imageOrb.addClass("orb-space");
-    
-    // Each imageOrb will be given a data attribute called data-orbvalue.
-    // This data attribute will be set equal to the array value.
-   // imageOrb.attr("data-orbvalue", numberOptions[i]);
-
-    // Lastly, each orb image (with all it classes and attributes) will get added to the page.
-   // $("#orbs").append(imageOrb);
-  //}
-   
  
