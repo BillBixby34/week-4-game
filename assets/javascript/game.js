@@ -47,6 +47,7 @@ $(document).ready(function(){
     //computer number will be between 19 and 120;
     //setting comChoice without 'let' allowed expected behavior
     comChoice = Math.floor(Math.random() * 120) + 19;
+    console.log(comChoice);
     userScore = 0;
 
         //set value of each orb
@@ -57,14 +58,13 @@ $(document).ready(function(){
     $("#user-total").text(userScore);
     $("#quest-number").text(comChoice);
     console.log("-------------------");
-    console.log(userScore);
-    console.log(comChoice);
     
   }
 
   //will determine wins and losses
   function keepScore(){
     if (userScore == comChoice){
+      $("#user-total").html(userScore);
       wins++;
       $("#wins").text(wins);
       alert("You win! Play again!"); 
@@ -84,7 +84,6 @@ $(document).ready(function(){
   $("#blue_orb").on("click", function(){userScore += orb.blue.value;
       $("#user-total").html(userScore);
       console.log(userScore)
-      console.log(comChoice)
       keepScore();
     })
   $("#gold_orb").on("click", function(){
